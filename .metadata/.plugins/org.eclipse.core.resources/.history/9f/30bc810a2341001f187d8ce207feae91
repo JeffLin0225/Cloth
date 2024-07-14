@@ -1,0 +1,39 @@
+package com.cloth.Controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class PageController {
+
+	@GetMapping("/")
+    public String home() {
+        return "系統首頁";
+    }
+
+    @GetMapping("/create")
+    public String create() {
+        return "上架";
+    }
+    
+    @GetMapping("/update")
+    public String update() {
+        return "上架";
+    }
+    
+    @GetMapping("/delete")
+    public String delete() {
+        return "課程回饋";
+    }
+    
+    @GetMapping("/select")
+    public String select() {
+        return "課程回饋";
+    }
+    
+    @GetMapping("/selectall")
+    public String selectall() {
+        return "課程回饋";
+    }
+	
+}

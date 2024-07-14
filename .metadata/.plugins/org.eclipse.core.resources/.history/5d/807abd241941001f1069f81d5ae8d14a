@@ -1,0 +1,34 @@
+package com.cloth.config;
+
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import com.cloth.Repository.AdminRepository;
+import com.cloth.model.Admin;
+
+import java.util.Collections;
+
+@Service
+public class UserDetailsServiceImpl implements UserDetailsService {
+
+    @Autowired
+    private AdminRepository adminRepo;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Admin admin = adminRepo.findByAdmin_name(username);
+        if (admin == null) {
+            throw new UsernameNotFoundException("Cannot find admin with username: " + username);
+        }
+
+        return new User(admin.getAdmin_name(), admin.getAdmin_pwd(),
+                Collections.singletonList(new SimpleGrantedAuthority(admin.getAuthority())));
+    }
+}

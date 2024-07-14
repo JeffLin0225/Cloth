@@ -1,0 +1,24 @@
+package com.cloth.Controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class PageController {
+
+	@GetMapping("/")
+    public String home() {
+        return "系統首頁";
+    }
+
+    @GetMapping("/selected-courses")
+    public String selectedCourses() {
+        return "修課清單";
+    }
+
+    @GetMapping("/course-feedback")
+    public String courseFeedback() {
+        return "課程回饋";
+    }
+	
+}

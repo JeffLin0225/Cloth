@@ -1,0 +1,20 @@
+package com.ispan.demo.model;
+
+public class Admin {
+	
+	id
+	admin_name
+	admin_pwd
+	title
+	gender
+	birth
+	email
+	phone_num
+	address
+	mg_type
+	created_by
+	created_at
+	updated_by
+	updated_at
+
+}

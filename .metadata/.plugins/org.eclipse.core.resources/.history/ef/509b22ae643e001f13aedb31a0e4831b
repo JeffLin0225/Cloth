@@ -1,0 +1,31 @@
+package com.ispan.demo.model;
+
+import java.util.Objects;
+
+public class CartId {
+
+	public CartId() {
+	}
+
+	private Integer usersId;
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(photosId, usersId);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CartId other = (CartId) obj;
+		return Objects.equals(photosId, other.photosId) && Objects.equals(usersId, other.usersId);
+	}
+
+	private Integer photosId;
+	
+}

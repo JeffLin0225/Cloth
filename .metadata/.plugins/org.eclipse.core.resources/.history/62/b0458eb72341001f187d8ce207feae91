@@ -1,0 +1,9 @@
+package com.cloth.service;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.cloth.model.Product;
+
+public class ProductRepository implements JpaRepository<Product, Integer> {
+
+}

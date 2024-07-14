@@ -1,0 +1,30 @@
+package com.ispan.demo.model;
+
+import java.util.Objects;
+
+public class ReplyId {
+	
+	private Product product;
+	private Admin admin;
+	private Comment comment;
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(admin, comment, product);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ReplyId other = (ReplyId) obj;
+		return Objects.equals(admin, other.admin) && Objects.equals(comment, other.comment)
+				&& Objects.equals(product, other.product);
+	}
+
+
+}

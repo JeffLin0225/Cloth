@@ -1,0 +1,18 @@
+package com.ispan.demo.model;
+
+public class Coupon {
+
+	id
+	name
+	description
+	discount
+	quantity
+	start_at
+	end_at
+	created_by
+	created_at
+	updated_by
+	updated_at
+	
+	
+}

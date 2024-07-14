@@ -1,0 +1,52 @@
+//package com.cloth.config;
+//
+//
+//
+//import org.springframework.security.core.GrantedAuthority;
+//import org.springframework.security.core.userdetails.UserDetails;
+//import java.util.Collection;
+//
+//public class CustomEmployeeDetails implements UserDetails {
+//
+//    private final Employee employee;
+//
+//    public CustomEmployeeDetails(Employee employee) {
+//        this.employee = employee;
+//    }
+//
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        // 根据用户的角色设置权限
+//        return null; // TODO: 根据 employee 中的 roles 设置权限
+//    }
+//
+//    @Override
+//    public String getPassword() {
+//        return employee.getPassword();
+//    }
+//
+//    @Override
+//    public String getUsername() {
+//        return employee.getUsername();
+//    }
+//
+//    @Override
+//    public boolean isAccountNonExpired() {
+//        return true; // 可根据业务逻辑自定义实现
+//    }
+//
+//    @Override
+//    public boolean isAccountNonLocked() {
+//        return true; // 可根据业务逻辑自定义实现
+//    }
+//
+//    @Override
+//    public boolean isCredentialsNonExpired() {
+//        return true; // 可根据业务逻辑自定义实现
+//    }
+//
+//    @Override
+//    public boolean isEnabled() {
+//        return employee.isEnabled();
+//    }
+//}

@@ -1,0 +1,28 @@
+package com.ispan.demo.model;
+
+import java.util.Date;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@Entity
+@Table(name = "Comment")
+public class Comment {
+
+	id
+	product_id
+	user_id
+	orderdetail_id
+	star
+	comments
+	img
+	created_at
+	updated_at
+	
+}

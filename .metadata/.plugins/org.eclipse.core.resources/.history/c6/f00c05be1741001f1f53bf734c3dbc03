@@ -1,0 +1,5 @@
+package com.cloth.config;
+
+public class UserDetailsServiceImpl {
+
+}

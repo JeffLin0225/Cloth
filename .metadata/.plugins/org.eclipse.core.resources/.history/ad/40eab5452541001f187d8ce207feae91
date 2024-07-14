@@ -1,0 +1,12 @@
+package com.cloth.Dao;
+
+import java.util.List;
+
+import org.json.JSONObject;
+
+
+
+public interface Product {
+	public abstract List<ProductBean> find(JSONObject obj);
+	public abstract long count(JSONObject obj);
+}

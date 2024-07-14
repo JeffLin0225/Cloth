@@ -1,0 +1,14 @@
+package com.ispan.demo.model;
+
+public class Customerservice {
+	
+	id
+	user_id
+	admin_id
+	chats
+	img1
+	img2
+	img3
+	send_at
+
+}

@@ -1,0 +1,13 @@
+package com.ispan.demo.model;
+
+public class Couponowner {
+
+	id
+	user_id
+	coupon_id
+	status
+	start_at
+	end_at
+	
+	
+}

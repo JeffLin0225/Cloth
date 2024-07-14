@@ -1,0 +1,13 @@
+package com.ispan.demo.model;
+
+public class Order {
+	
+	id
+	user_id
+	status
+	shipping_at
+	coupon_id
+	created_at
+	updated_at
+
+}

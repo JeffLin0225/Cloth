@@ -1,0 +1,10 @@
+package com.ispan.demo.model;
+
+public class Return {
+	
+	id
+	user_id
+	reason
+	created_at
+
+}

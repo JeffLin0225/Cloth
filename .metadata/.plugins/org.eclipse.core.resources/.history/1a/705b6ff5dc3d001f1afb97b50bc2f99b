@@ -1,0 +1,15 @@
+package com.ispan.demo.model;
+
+public class Comment {
+
+	id
+	product_id
+	user_id
+	orderdetail_id
+	star
+	comments
+	img
+	created_at
+	updated_at
+	
+}

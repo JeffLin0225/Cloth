@@ -1,0 +1,9 @@
+package com.ispan.demo.model;
+
+public class ReplyId {
+	private Product product;
+	private Admin admin;
+
+	private Comment comment;
+
+}

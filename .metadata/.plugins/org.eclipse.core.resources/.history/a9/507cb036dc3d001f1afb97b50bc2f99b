@@ -1,0 +1,16 @@
+package com.ispan.demo.model;
+
+public class Activity {
+
+	
+	
+	id
+	name
+	discount_percent
+	start_at
+	end_at
+	created_by
+	created_at
+	updated_by
+	updated_at
+}

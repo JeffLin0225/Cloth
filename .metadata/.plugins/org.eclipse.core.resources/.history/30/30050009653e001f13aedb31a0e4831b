@@ -1,0 +1,21 @@
+package com.ispan.demo.model;
+
+import java.util.Objects;
+
+import jakarta.persistence.Entity;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@Entity
+public class CartId {
+	
+	private Users users_id;
+	private Product product_id;
+	private Order order_id;
+	
+	
+}

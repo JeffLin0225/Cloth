@@ -1,0 +1,169 @@
+package com.cloth.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.cloth.Repository.ProductRepository;
+import com.cloth.config.DatetimeConverter;
+import com.cloth.model.Product;
+
+
+
+@Service
+@Transactional
+public class ProductService {
+	@Autowired
+	private ProductRepository productRepository;
+
+	public boolean existsByName(String name) {
+		if(name!=null && name.length()!=0) {
+			return productRepository.countByName(name)!=0;
+		}
+		return false;
+	}
+
+	public Product modify(String json) {
+		try {
+			JSONObject obj = new JSONObject(json);
+			Integer id = obj.isNull("id") ? null : obj.getInt("id");
+			String name = obj.isNull("name") ? null : obj.getString("name");
+			Double price = obj.isNull("price") ? null : obj.getDouble("price");
+			String make = obj.isNull("make") ? null : obj.getString("make");
+			Integer expire = obj.isNull("expire") ? null : obj.getInt("expire");
+
+			Optional<Product> optional = productRepository.findById(id);
+			if(optional.isPresent()) {
+				Product update = optional.get();
+				update.setName(name);
+				update.setPrice(price);
+				update.setMake(null);
+				update.setMake(DatetimeConverter.parse(make, "yyyy-MM-dd"));
+				update.setExpire(expire);
+
+				return productRepository.save(update);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public Product create(String json) {
+		try {
+			JSONObject obj = new JSONObject(json);
+			Integer id = obj.isNull("id") ? null : obj.getInt("id");
+			String name = obj.isNull("name") ? null : obj.getString("name");
+			Double price = obj.isNull("price") ? null : obj.getDouble("price");
+			String make = obj.isNull("make") ? null : obj.getString("make");
+			Integer expire = obj.isNull("expire") ? null : obj.getInt("expire");
+			
+			Optional<Product> optional = productRepository.findById(id);
+			if(optional.isEmpty()) {
+				Product insert = new Product();
+				insert.setId(id);
+				insert.setName(name);
+				insert.setPrice(price);
+				insert.setMake(null);
+				insert.setMake(DatetimeConverter.parse(make, "yyyy-MM-dd"));
+				insert.setExpire(expire);
+
+				return productRepository.save(insert);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public boolean remove(Integer id) {
+		if(id!=null) {
+			Optional<Product> optional = productRepository.findById(id);
+			if(optional.isPresent()) {
+				productRepository.deleteById(id);
+				return true;
+			}
+		}
+		return false;
+	}
+	public boolean exists(Integer id) {
+		if(id!=null) {
+			return productRepository.existsById(id);
+		}
+		return false;
+	}
+	public Product findById(Integer id) {
+		if(id!=null) {
+			Optional<Product> optional = productRepository.findById(id);
+			if(optional.isPresent()) {
+				return optional.get();
+			}
+		}
+		return null;
+	}
+	public long count(String json) {
+		try {
+			JSONObject obj = new JSONObject(json);
+			return productRepository.count(obj);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	public List<Product> find(String json) {
+		try {
+			JSONObject obj = new JSONObject(json);
+			return productRepository.find(obj);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public List<Product> select(Product bean) {
+		List<Product> result = null;
+		if(bean!=null && bean.getId()!=null && !bean.getId().equals(0)) {
+			Optional<Product> optional = productRepository.findById(bean.getId());
+			if(optional.isPresent()) {
+				result = new ArrayList<Product>();
+				result.add(optional.get());
+			}
+		} else {
+			result = productRepository.findAll();
+		}
+		return result;
+	}
+	public Product insert(Product bean) {
+		if(bean!=null && bean.getId()!=null) {
+			Optional<Product> optional = productRepository.findById(bean.getId());
+			if(optional.isEmpty()) {
+				return productRepository.save(bean);
+			}
+		}
+		return null;
+	}
+	public ProductBean update(Product bean) {
+		if(bean!=null && bean.getId()!=null) {
+			Optional<Product> optional = productRepository.findById(bean.getId());
+			if(optional.isPresent()) {
+				return productRepository.save(bean);
+			}
+		}
+		return null;
+	}
+	public boolean delete(ProductBean bean) {
+		if(bean!=null && bean.getId()!=null) {
+			Optional<ProductBean> optional = productRepository.findById(bean.getId());
+			if(optional.isPresent()) {
+				productRepository.deleteById(bean.getId());
+				return true;
+			}
+		}
+		return false;
+	}
+}

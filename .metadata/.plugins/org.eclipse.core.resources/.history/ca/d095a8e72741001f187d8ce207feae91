@@ -1,0 +1,11 @@
+package com.cloth.Repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import com.cloth.model.Product;
+
+public interface ProductRepository extends JpaRepository<Product, Integer> {
+	@Query(value="select count(*) from Product where name = :name")
+    public long countByName(String name);
+}
