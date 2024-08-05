@@ -1,7 +1,7 @@
 <template>
     <div>
       <div class="activity-container">
-        <div class="activity-row">
+        <div class="activity-row"> 
          
           <div class="activity-info">
            <h5 class="activity-name"><font-awesome-icon :icon="['fas', 'tags']" />&nbsp;<strong>{{ activity.name }}</strong></h5>
